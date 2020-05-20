@@ -1,0 +1,12 @@
+@media (max-width: 575px) {
+    .nav-item {
+        text-align: center;
+    }
+
+    .brand-logo {
+        transform: translateX(-50%);
+        left: 50%;
+        position: absolute;
+      }
+
+}
