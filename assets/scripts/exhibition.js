@@ -1,4 +1,4 @@
-$.getJSON("../../submission.json", function(json) {
+$.getJSON("../../api/submission.json", function(json) {
   console.log(json);
   for (let i = 0; i < json.length; i++) {
     var card = `

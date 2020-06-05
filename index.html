@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Landing Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">        
+    </head>
+
+    <body>
+
+        <!-- START OF HEADER SECTION -->
+        <header>
+            <nav class="main-nav" id="main-nav"> 
+                <div class="hamburger-nav">
+                    <span class="bars"></span>
+                </div>
+                
+                <div class="logo">
+                    <a href="index.html">800Greenwood</a>
+                </div>
+
+                <ul class="nav-list" id="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Exhibitions</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Artists</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link donate">Donate</a>
+                    </li>
+                                   
+                </ul>
+                <button class="search-btn" id="srch">
+                    <i  class="fa fa-search"></i>
+                </button> 
+
+                
+                <div class="search-box">
+                    <form  autocomplete="off" action="" class="search-form" role="search">
+                        <input type="input" class="search-field" name="srch-term" placeholder="Search">
+                        <button type="submit" class="submit-btn">&#8594</button>
+                    </form>
+                </div>
+            </nav> 
+        </header>
+        <!-- END OF HEADER SECTION -->
+
+        <!-- START OF TOP BANNER SECTION -->
+        <div class="hero">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="content-textbox" id="box">
+                        <h1 class="main-title">Welcome to <br> 800Greenwood</h1>
+                        <h3>The Official Virtual Art Gallery for Danforth and Greenwood</h3>
+                    </div> 
+                    <div class="start-btn">
+                        <a class="cta-btn" href="#start">Get started <span id="arrow-right"></span></a> 
+                    </div>
+                                   
+                </div>  
+            </div>               
+        </div>
+
+        <!--  -->
+
+        <!-- START OF MAIN -->
+        <main class="main-wrapper" id="start">
+            <div class="artwork-slideshow"> 
+                <h1 class="title-center">Most Popular Artwork</h1>          
+                <div class="artwork-container">
+                    <figure class="slides fadeIn">
+                        <div class="artwork">
+                            <img src="https://drive.google.com/uc?id=1X8rKGw1p3TGCZ-gwUy90fwbq6hAHCKXi" class="image-resize" alt="Drawing Category">
+                        </div>                        
+                        <figcaption>
+                        <h3>Rose-Samaroo</h3>
+                        <p>Moonlight Gazing</p>
+                        </figcaption>
+                    </figure>  
+            
+                    <figure class="slides fadeIn">
+                        <div class="artwork">
+                            <img src="https://drive.google.com/uc?id=1qY1v6Qn7i4QaEbWZrPwX9E6ksNO6qcSX" class="image-resize" alt="Drawing Category">
+                        </div>                        
+                        <figcaption>
+                        <h3>Art room point 1</h3>
+                        <p>Tasneem Ahmed</p>
+                        </figcaption>
+                    </figure> 
+                
+                    <figure class="slides fadeIn">
+                        <div class="artwork">
+                            <img src="https://drive.google.com/uc?id=1za4eGdTj1NwMlcCM-EPN7hrmnwqovnui" class="image-resize" alt="Drawing Category">
+                        </div>                        
+                        <figcaption>
+                        <h3>Harmony on a wire</h3>
+                        <p>Subah-Zaman</p>
+                        </figcaption>
+                    </figure> 
+                
+                    <figure class="slides fadeIn">
+                        <div class="artwork">
+                            <img src="https://drive.google.com/uc?id=1jOIcM4ZDnZpzdVhUhsit2TU9ZDY2szU2" class="image-resize" alt="Drawing Category">
+                        </div>                        
+                        <figcaption>
+                        <h3>Autumn Road</h3> 
+                        <p>Mayesha Islam</p>         
+                        </figcaption>
+                    </figure>                 
+                </div>  
+                <!-- Dot indicators -->
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>    
+            </div>     
+            
+            
+            <!-- END OF TOP BANNER SECTION -->                  
+            <div class="featured-categories">
+                <h2 class="title-center category-title">Featured categories</h2>  
+
+                <div class="grid-container">
+                    <div class="category">
+                        <a href="" class="category-link">
+                            <img src="./images/Slayer_of_Evil.jpg" alt="Sculpting">
+                            <div class="category-caption">
+                                <h4>Sculpting</h4> 
+                            </div>
+                        </a>
+                    </div>   
+
+                    <div class="category">
+                        <a href="" class="category-link">
+                            <img src="https://drive.google.com/uc?id=1yKnIRXFQceAAP-EKJxdQXVVrFzqnaeE9" alt="Painting">
+                            <div class="category-caption">
+                                <h4>Painting</h4> 
+                            </div>
+                        </a>                        
+                    </div> 
+
+                    <div class="category">
+                        <a href="" class="category-link">
+                            <img src="https://drive.google.com/uc?id=1Qu8_77Nb8UjmBvRplXrawwyCkapZL-Vb" alt="Photography">
+                            <div class="category-caption">
+                                <h4>Photography</h4> 
+                            </div>
+                        </a>
+                    </div> 
+                    
+                    <div class="category">
+                        <a href="" class="category-link">
+                            <img src="https://drive.google.com/uc?id=1LIbIS1fwLDch8VjPVeJyhaXHbCzuacWZ" alt="Drawing">
+                            <div class="category-caption">
+                                <h4>Drawing</h4> 
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>    
+        
+        <footer>
+            <div class="footer-content">
+                <h3 class="footer-hearder">Stay Connected</h3>
+                <p class="footer-subhearder">Follow us on:</p>
+                <div class="social">                    
+                <a><i class="fa fa-facebook"></i></a>
+                <a><i class="fa fa-twitter"></i></a>
+                <a><i class="fa fa-instagram"></i></a>
+            </div> 
+
+            <p class="last">&copy 2020 800Greenwood All Rights Reserved.</p> 
+                          
+        </footer>
+        
+
+     
+
+        
+
+
+        <script language="JavaScript" type="text/javascript" src="/js/JQuery3.5.1.js"></script>
+         <script src="./js/main.js"></script>
+         
+    </body>
+</html>
