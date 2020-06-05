@@ -1,3 +1,4 @@
+/********************   Media Queries   ********************/
 @media (max-width: 575px) {
     .nav-item {
         text-align: center;
@@ -7,10 +8,7 @@
         transform: translateX(-50%);
         left: 50%;
         position: absolute;
-      }
-
-    .donate-btn{
-        margin-top: 0.50em;
     }
-
 }
+
+/********************   HTML Elements   ********************/
