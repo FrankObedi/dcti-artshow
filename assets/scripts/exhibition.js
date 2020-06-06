@@ -13,22 +13,4 @@ $.getJSON("../../api/submission.json", function(json) {
   }
 });
 
-// Howdy buttercup
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var b = 63;
