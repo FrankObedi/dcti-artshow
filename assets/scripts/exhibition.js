@@ -12,8 +12,3 @@ $.getJSON("../../api/submission.json", function(json) {
     $(".card-columns").append(card);
   }
 });
-
-//this is my comment now
-// Howdy buttercup
-
-var a = 32;
