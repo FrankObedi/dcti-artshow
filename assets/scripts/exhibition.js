@@ -12,17 +12,3 @@ $.getJSON("../../api/submission.json", function(json) {
     $(".card-columns").append(card);
   }
 });
-
-
-// git is shit
-var a = 25;
-
-
-
-// Hi Souradeep
-
-//This is the final change for shafees connection
-
-//Franks comment
-
-//This is the final comment for frank's github
