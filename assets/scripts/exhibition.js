@@ -12,3 +12,5 @@ $.getJSON("../../api/submission.json", function(json) {
     $(".card-columns").append(card);
   }
 });
+
+// Howdy buttercup
