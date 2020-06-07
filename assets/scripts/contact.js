@@ -5,8 +5,15 @@
 
 
 
+
+
+
+
+
+
+
 //   for(var i = 0; i < arrayJson.length; i++){
-  
+
 //     // console.log( arrayJson[i]['First Name']);
 //     const optionBox = document.querySelector('.optionBox');
 //     const option = document.createElement('div');
@@ -75,11 +82,11 @@
 
 
 
-$.getJSON("../../api/submission.json", function(json) {
+$.getJSON("api/submission.json", function(json) {
   console.log(json);
 
-  const arrayFNPrime = [];
-  const arrayLNPrime = [];
+  var arrayFNPrime = [];
+  var arrayLNPrime = [];
   
   for (let i = 0; i < json.length; i++) {
 
@@ -88,7 +95,8 @@ $.getJSON("../../api/submission.json", function(json) {
   
 
 }
-  console.log(arrayFNPrime.entries);
+
+console.log(arrayFNPrime.entries);
 
 
 
