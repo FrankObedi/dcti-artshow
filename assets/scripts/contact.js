@@ -1,132 +1,93 @@
-// const searchFriends = () => {
-
-
-
-
-
-
-
-
-
-
-//   for(var i = 0; i < arrayJson.length; i++){
-
-//     // console.log( arrayJson[i]['First Name']);
-//     const optionBox = document.querySelector('.optionBox');
-//     const option = document.createElement('div');
-//     const input = document.createElement('input');
-//     const label = document.createElement('label');
-
-//     if(i == 0) {
-
-//             // setup label for optionBox
-//             option.setAttribute('class', 'option');
-//             // setup input button for option
-//             input.setAttribute('type', 'radio');
-//             input.setAttribute('name', 'category');
-//             input.setAttribute('class', 'radio');
-//             input.setAttribute('id', arrayJson[i]['First Name']);
-
-//             // setup label for option
-//             label.setAttribute('for', arrayJson[i]['First Name']);
-//             label.innerHTML = arrayJson[i]['First Name'] + " " + arrayJson[i]['Last Name'];
-
-//             // console.log(input);
-
-//             // console.log(label);
-//             option.appendChild(input);
-//             option.appendChild(label);
-//             optionBox.appendChild(option);
-//             console.log(optionBox);
-
-//     }
-
-//     else{
-
-
-//         if(arrayJson[i]['First Name'] != arrayJson[i-1]['First Name']){
-//             // setup label for optionBox
-//             option.setAttribute('class', 'option');
-//             // setup input button for option
-//             input.setAttribute('type', 'radio');
-//             input.setAttribute('name', 'category');
-//             input.setAttribute('class', 'radio');
-//             input.setAttribute('id', arrayJson[i]['First Name']);
-
-//             // setup label for option
-//             label.setAttribute('for', arrayJson[i]['First Name']);
-//             label.innerHTML = arrayJson[i]['First Name'] + " " + arrayJson[i]['Last Name'];
-
-//             // console.log(input);
-
-//             // console.log(label);
-//             option.appendChild(input);
-//             option.appendChild(label);
-//             optionBox.appendChild(option);
-//             // console.log(optionBox);
-//             }
-//           }
-
-
-//     }
-
-
-
-
-// }
-
-
-
-var firstName = new Set(), lastName = new Set();
+// var firstName = new Set(), lastName = new Set();
+var First = []; 
+var Last = [];
 $.getJSON("../../api/submission.json", function(json) {
-  for (let i = 0; i < json.length;i++) {
-    firstName.add(json[i]['First-Name']);
-    lastName.add(json[i]['Last-Name']);
+
+
+  for(let i = 0; i < json.length; i++){
+    First[i] = json[i]['First-Name'];
+    Last[i] = json[i]['Last-Name'];
+    // firstName[i] = json[i]['First-Name'];
   }
-});
 
-console.log(firstName)
-console.log(lastName);
+// console.log(First);
 
-<<<<<<< HEAD
-$.getJSON("api/submission.json", function(json) {
-=======
-/*
-$.getJSON("../../api/submission.json", function (json) {
->>>>>>> upstream/master
-  console.log(json);
+// console.log(Last);
 
-  var arrayFNPrime = [];
-  var arrayLNPrime = [];
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> upstream/master
-  for (let i = 0; i < json.length; i++) {
-    arrayFNPrime[i] = json[i]['First-Name']
-    arrayLNPrime[i] = json[i]['Last-Name']
-  }
-  console.log(arrayFNPrime.entries);
 
-  //   var card = `
-  // <div class="card">
-  //   <img class="card-img-top" src="${json[i].URL}" alt="Card image cap">
-  //   <div class="card-body">
-  //     <p class="card-text">${json[i]['First-Name']} ${json[i]['Last-Name']}</p>
-  //     <p class="card-text">${json[i]['Artist-Statement']}</p>
-  // </div>`
 
-<<<<<<< HEAD
-}
 
-console.log(arrayFNPrime.entries);
-=======
-  // $(".card-columns").append(card);
->>>>>>> upstream/master
 
-});
-*/
+    for(let i = 0; i < First.length; i++){
+      
+      for(let j = i+1; j < First.length; j++){
+   
+        if(First[j] == 1){
+          First[j] = '1';
+// break;
+        }  else if(First[j] === First[i]){
+           
+            First.splice(j, 1, '1');
+            Last.splice(j, 1, '1');
+            // break;
+          }
+
+        }
+
+     }
+
+    //  console.log(First);
+    //  console.log(Last);
+     // for(let i = 0; i < First.length; i++){
+
+    //   if(First[i] == '1'){
+    //     First.splice(i,1);
+    //     Last.splice(i,1);
+
+
+    //   }
+
+    // }
+
+    var firstFilter = First.filter( FirstName => FirstName != 1 );
+    var lastFilter = Last.filter( LastName => LastName  != 1);
+
+  // console.log(firstFilter);
+  // console.log(lastFilter);
+ 
+  for(let i = 0; i < firstFilter.length; i++){
+    const optionBox = document.querySelector('.optionBox');
+    const option = document.createElement('div');
+    const input = document.createElement('input');
+    const label = document.createElement('label');
+
+// option attributes
+    option.setAttribute('class', 'option');
+
+// input attributes
+    input.setAttribute('type', 'radio');
+    input.setAttribute('name', 'category');
+    input.setAttribute('class', 'radio');
+    input.setAttribute('id', First[i]);
+//  label attributes
+    label.setAttribute('for', firstFilter[i]);
+    label.innerHTML = firstFilter[i] + " " + lastFilter[i];
+    // console.log(label);
+
+
+    option.appendChild(input);
+    option.appendChild(label);
+    optionBox.appendChild(option);
+
+  } 
+
+
+    selectMenu();
+
+
+  });
+
 
 
 const navOpen = () => {
@@ -180,6 +141,8 @@ const navChange = () => {
   const donation = document.querySelector('.practice');
   const before = document.querySelector('.practiceParagraph::before');
   const after = document.querySelector('.practiceParagraph::after');
+  const user = document.querySelector('.fa-user');
+  const envelope = document.querySelector('.fa-envelope');
 
   console.log(donation);
   window.addEventListener('scroll', () => {
@@ -194,13 +157,19 @@ const navChange = () => {
     form.classList.toggle('up', window.scrollY > 60);
     if (form.style.animation) {
       form.style.animation = '';
+    
 
     } else {
       form.style.animation = 'boxy 1s ease forwards 1s';
+     
+
       // needs work, also work on smooth scrolling    
     }
-
-
+ 
+    // user.classList.toggle('crow');
+    // envelope.classList.toggle('crow');
+ 
+   
     donation.classList.toggle('houdini', window.scrollY > 800);
 
 
@@ -335,49 +304,142 @@ const selectMenu = () => {
       }
 
 
-
-
     });
 
   }
 
+}
 
+
+const linkAnimate = () => {
+  const linkFamilies= document.querySelectorAll('.linkFamily');
+    
+    linkFamilies.forEach( link => {
+      link.addEventListener(  'click' , () => {
+
+        link.classList.toggle('initiated');
+        // link.parentElement.style.animate = 'skewAnimate 1s ease forwards 1s';
+      }); 
+
+      
+  });
+    
 
 }
 
-// const scroll = () =>{
 
-//     const trigger = document.querySelector('.arrow');
+const linkHeader = () => {
 
-//     trigger.addEventListener('click', () => {
+    const header = document.querySelectorAll('.linkFamily');
+    // console.log(header[0].parentElement);
+ 
+    // console.log(header[0].parentElement.parentElement);
+    
+  header.forEach(heading => {
 
-//         document.getElementById('donation').scrollIntoView({
+      heading.addEventListener('click', () => {
 
-//             behaviour: 'smooth'
-//         });
+        if(heading.parentElement.classList.contains('meow')){
+        
+          heading.parentElement.classList.remove('meow');
+
+        } else{
+
+          heading.parentElement.classList.toggle('meow');
+
+        }
+
+
+        if(heading.parentElement.parentElement.classList.contains('linkGroupAltered')){
+         
+          if(heading  == header[0]){
+         
+            heading.parentElement.nextElementSibling.classList.remove('ouch');         
+         
+          } else { 
+
+            heading.parentElement.nextElementSibling.classList.remove('ouch');         
+            heading.parentElement.nextElementSibling.style.opacity  = '0';         
+            
+          }
+         
+         
+          heading.parentElement.parentElement.classList.remove('linkGroupAltered');
+
+        } else {
+         
+          heading.parentElement.parentElement.classList.toggle('linkGroupAltered');
+    
+            if(heading == header[0]){ 
+              
+              heading.parentElement.nextElementSibling.classList.toggle('ouch');
+              
+            } else{ 
+
+              heading.parentElement.nextElementSibling.classList.toggle('ouch');
+              heading.parentElement.nextElementSibling.style.opacity = '0.4';
+              
+
+            }
+        
+        
+
+        }
+        
+        
 
 
 
-//     });
+
+      });
+
+    });
+
+}
 
 
-// }
+  const readMore = () => {
 
-const copyCat = () => {
+    const readmore = document.querySelectorAll('.linkReadMore');
+    // const linkCard = document.querySelector('.linkCard');
+    // const back = document.querySelector('.linkCardBack');
+    // console.log(readmore[0].nextElementSibling);
 
-  const options = document.querySelectorAll('.option');
+    // console.log();
 
-  for (var i = 0; i < options.length; i++) {
-    // console.log(options[i].firstElementChild.nextElementSibling.innerHTML);
-    for (var j = 1; j < options.length; j++) {
+    readmore.forEach( rm => {
+      rm.addEventListener('click', () => {
+        rm.nextElementSibling.classList.toggle('read');     
+        // readmore.lastChild.classList.toggle('read');
+        rm.nextElementSibling.lastElementChild.style.animation = 'back 1s ease forwards';
+       
+       
+        rm.nextElementSibling.lastElementChild.addEventListener('click',() => {
 
-      //     if(options[j].firstElementChild.nextElementSibling.innerHTML == options[i].firstElementChild.nextElementSibling.innerHTML )
-      //    { 
-      //        options[j].remove();
+          if(rm.nextElementSibling.lastElementChild.style.animation)   {
+            rm.nextElementSibling.lastElementChild.style.animation = ' ';
+          }
 
-      // }
+          rm.nextElementSibling.classList.remove('read');
+    
+        });
 
-    }
+
+      });
+
+    });
+
+// add forEach when you add the nextLink card
+    // back.addEventListener('click',() => {
+
+
+    //   if(back.style.animation)   {
+    //     back.style.animation = ' ';
+    //   }
+    //   linkCard.classList.remove('read');
+
+    // });
+
 
   }
 
@@ -386,14 +448,12 @@ const copyCat = () => {
 
 
 
-}
 
-
-searchFriends();
-copyCat();
+// Called Functions
+linkHeader();
 navChange();
 navOpen();
 socialBar();
 animatedForm();
-selectMenu();
-// scroll();
+readMore();
+linkAnimate();
