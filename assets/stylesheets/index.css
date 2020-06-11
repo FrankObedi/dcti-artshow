@@ -6,7 +6,7 @@
 :root {
     --menu-bg-color: rgba(0, 0, 0, 0.37);
     --nav-link-color: #ffffff;
-    --nav-link-hover: #000000;
+    --nav-link-hover: #ffffff;
     --search-btn-color: #ffffff;
     --search-btn-size: 20px;
     --nav-icon-color: #ffffff;
@@ -307,7 +307,7 @@ main{
     top: -70px;
     width: 100vw;
     height: 112%;
-    background: #fc00ff; 
+    background: #ff4423; 
     background-image: url("./danforth-tech.jpg");
     background-size: cover;
     position: 100% 28%;
@@ -931,7 +931,6 @@ main{
 @media only screen and (min-width: 1000px){
 
     /* START OF DESKTOP NAVBAR */
-
     .hamburger-nav{
         display: none;
     }  
