@@ -1,0 +1,29 @@
+{
+  "name": "dcti-artshow",
+  "version": "1.0.0",
+  "description": "The official online art exhibition for Danforth Collegiate and Technical Institute and Greenwood Secondary School",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SouradeepSaha/dcti-artshow.git"
+  },
+  "keywords": [
+    "Art",
+    "DCTI",
+    "Danforth",
+    "Art",
+    "Greenwood"
+  ],
+  "author": "Souradeep Saha, Frank Obedi, Shafee Rashidi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SouradeepSaha/dcti-artshow/issues"
+  },
+  "homepage": "https://github.com/SouradeepSaha/dcti-artshow#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
