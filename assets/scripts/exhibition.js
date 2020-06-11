@@ -5,8 +5,8 @@ $.getJSON("../../api/submission.json", function(json) {
     <div class="card">
       <img class="card-img-top" src="${json[i].URL}" alt="Card image cap">
       <div class="card-body">
-        <p class="card-text">${json[i]['First-Name']} ${json[i]['Last-Name']}</p>
-        <p class="card-text">${json[i]['Artist-Statement']}</p>
+      <h5 class="card-title">${json[i]['Art-Name']}</h5>  
+      <p class="card-title">${json[i]['First-Name']} ${json[i]['Last-Name']}</p>
     </div>`
     
     $(".card-columns").append(card);
@@ -14,15 +14,3 @@ $.getJSON("../../api/submission.json", function(json) {
 });
 
 
-// git is shit
-var a = 25;
-
-
-
-// Hi Souradeep
-
-//This is the final change for shafees connection
-
-//Franks comment
-
-//This is the final comment for frank's github
