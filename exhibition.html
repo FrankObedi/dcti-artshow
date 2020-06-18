@@ -21,8 +21,10 @@
   <!-- assets/dependencies -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/stylesheets/index.css">
   <link href="assets/stylesheets/exhibition.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Exhibition</title>
 </head>
 
@@ -30,7 +32,7 @@
 
   <nav class="navbar navbar-expand-sm navbar-light">
     <a class="navbar-brand" href="index.html"> <img class="brand-logo" src="assets/img/logo.png" width="30" height="30"
-        class="d-inline-block align-top" alt="artshow logo" style="font-family: ColorTube, sans-serif;">800Greenwood</a>
+        class="d-inline-block align-top" alt="artshow logo" style="font-family: ColorTube, sans-serif;">800 Greenwood</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar-menu"
       aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +46,25 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html#donate">Donate</a></li>
-      </ul>
+      </ul>      
     </div>
+
+    <!-- Search form trigger -->
+    <button class="search-btn" id="srch">
+      <i  class="fa fa-search"></i>
+    </button> 
+    <!-- Search form to navigate through website. -->
+    <div class="search-box">
+      <div class="search-form">
+          <input type="search" class="search-field field_1" name="art-search"  placeholder=""  value="Search..." autocomplete="off" onmousedown="active();" onblur="inactive();" required>
+          <input id="submit" type="submit" class="submit-btn" onclick="getData(searchBar.value);  storeSearchData(); window.location='results.html';" value="&#8594">
+      </div>
+    </div>
+    
   </nav>
+
+
+
 
   <div class="jumbotron">
     <div class="container">
@@ -226,6 +244,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
   <script src="assets/scripts/exhibition.js"></script>
+
+  <!-- FRANKS JS CODE -->
+  <script src="assets/scripts/index.js"></script>
+  <script src="assets/scripts/results.js"></script>
 </body>
 
 </html>

@@ -29,6 +29,19 @@ body {
     padding: 0%;
 }
 
+.search-btn{
+    color: #000000;
+    border: none;
+}
+
+.search-box, .search-form{
+    position: absolute;
+    margin-top: -10px;
+    right: 0;
+    max-width: 89.2vw;
+}
+
+
 
 /********************   Media Queries   ********************/
 @media (max-width: 575px) {

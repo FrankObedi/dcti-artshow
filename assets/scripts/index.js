@@ -1,67 +1,147 @@
-window.onload=function(){
-  setTimeout(menu1, 1000);
-}
+// window.onload=function(){
+//   setTimeout(menu1, 1000);
+// }
 
 
 
 // CODE FOR THE PAGE FADE-IN ANIMATE
-function menu1(){
-  var links = document.querySelectorAll(".nav-list, .logo, .search-btn, .search-box, .content-textbox, .hero-content, .hamburger-nav, .hero-img, .hero-textbox");
-  for(var i=0; i < links.length; i++){
-      links[i].style.opacity = '1';
-      links[i].style.transform = 'translate(0)';
-  }
+// function menu1(){
+//   var links = document.querySelectorAll(".nav-list, .logo, .search-btn, .search-box, .content-textbox, .hero-content, .hamburger-nav, .hero-img, .hero-textbox");
+//   for(var i=0; i < links.length; i++){
+//       links[i].style.opacity = '1';
+//       links[i].style.transform = 'translate(0)';
+//   }
 
-}
+// }
 // END OF FADE-IN ANIMATE CODE
 
-// CODE FOR MENU TOGGLE
-const mainNav = document.querySelector('.main-nav');
-const menu = document.querySelector('.hamburger-nav');
 
-menu.addEventListener('click', function(){
-  mainNav.classList.toggle('open');
-})
+// CODE FOR MENU TOGGLE
+var mainNav;
+var menu;
+if(document.querySelector('.main-nav')){
+  mainNav = document.querySelector('.main-nav');
+  if(document.querySelector('.hamburger-nav')){
+    menu = document.querySelector('.hamburger-nav');
+    menu.addEventListener('click', function(){
+      mainNav.classList.toggle('open');
+    })
+    
+  }
+}
+
+
+
 
 
 
 // Change he navbar background when we scroll
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $(".main-nav");
-    var $scrollArrow = $(".cta-slide_contianer");
-    $nav.toggleClass('onscroll-menu', $(this).scrollTop() > $nav.height());
-    $scrollArrow.toggleClass('hide-arrow', $(this).scrollTop() > $nav.height());
-  });
-});
-  
+const heroText = document.querySelector(".hero-textbox");
 
+observeOneOptions = {
+  rootMargin: "-330px 0px 0px 0px"
+};
+
+const observerOne = new IntersectionObserver(function (
+  entries,
+  observeOneOptions
+) {
+  entries.forEach(entry =>{
+    if(!entry.isIntersecting){
+      mainNav.classList.add("onscroll-menu");
+    } else{
+      mainNav.classList.remove('onscroll-menu');
+    }
+  })
+}, 
+observeOneOptions);
+
+if(document.querySelector(".hero-textbox")){
+  observerOne.observe(heroText);
+}
 
 
 //CODE FOR SEARCH TOGGLE
-const searchslide_contianer = document.querySelector('.fa-search');
+const search_contianer = document.querySelector('.fa-search');
 const searchBox = document.querySelector('.search-box');
-searchslide_contianer.addEventListener('click', function(){
-  searchslide_contianer.classList.toggle("fa-times");
+search_contianer.addEventListener('click', function(){
+  search_contianer.classList.toggle("fa-times");
+  search_contianer.classList.toggle("down");
   searchBox.classList.toggle('showSearch');
+  search_contianer.classList.toggle("invertSearchIcon");
   mainNav.classList.toggle('invert-menu');
 })
-// // END OF SEARCH TOGGLE
+
+
+var results = [];
+var searchBar = document.querySelector('.search-field');
+
+// Change the place holder in the input when you click on it
+function active(){
+  if(searchBar.value == 'Search...'){
+    searchBar.value = '';
+    searchBar.placeholder = 'Search...';
+  }
+}
+
+function inactive(){
+  if(searchBar.value == ''){
+    searchBar.value = 'Search...';
+    searchBar.placeholder = '';
+  }
+}
+
+
+// Check when someone hits the Enter Key while searching
+document.querySelector('.search-field').onkeypress = function(e) {
+  var event = e || window.event;
+  var charCode = event.which || event.keyCode;
+
+  if ( charCode == '13' ) {  
+    
+    sessionStorage.setItem('newTerm', searchBar.value);
+    var returnSearch = sessionStorage.getItem('newTerm');
+    console.log(returnSearch);
+
+    getData(searchBar.value);
+    return false;
+  }
+}
+
+const storeSearchData = function(){
+  sessionStorage.setItem('newTerm', searchBar.value);
+  window.location = "results.html";
+}
+
+
+//This applies to external pages that come to this page
+if(document.querySelector('.field_1')){
+
+  document.querySelector('.field_1').onkeypress = function(e) {
+    var event = e || window.event;
+    var charCode = event.which || event.keyCode;
+  
+    if ( charCode == '13' ) {  
+      
+      storeSearchData();
+  
+      getData(searchBar.value);
+      return false;
+    }
+  }
+
+}
 
 
 
 
 
-
-
-
-
-
+var card;
 
 $.getJSON("../../api/submission.json", function(json) {
 
   //Array of name of artworks to use for slideshow
-  let slideArtworks = ["Art Room", "Yearbook Graduate Section Divider", "Harmony on a wire.", "Soaring Above the City"];
+  let slideArtworks = ["Afar",  "Madonna of the Book", "nEmerald Carrot", "Smokes against the world"];
   //Array to store URLs of the slideshow images
   let slideURLs = [];
   //Array to store Name of the art
@@ -88,8 +168,8 @@ $.getJSON("../../api/submission.json", function(json) {
   for (let i = 0; i < slideArtworks2.length; i++) {
 
     var slide = `
-    <div class="slides">
-      <img class="slide-img" src="${slideURLs[i]}" alt="IMAGE NOT FOUND">
+    <div class="slides slide-in">      
+      <img class="slide-img" src="${slideURLs[i]}" alt="IMAGE NOT FOUND"> 
       <div class="slide-body">
         <h4 class="slide-name">${slideArtworks2[i]}</h4>
         <p class="slide-text">${slideArtist[i]}</p>
@@ -97,13 +177,16 @@ $.getJSON("../../api/submission.json", function(json) {
     </div>`
 
     $(".artwork-container").append(slide);
-   
+  
   }
 
 
   //Array of name of artworks to use for slideshow
-  let cardArtworks = ["Nipsey Hussle Memorial", "Afar", "Woman with the Animal Hat", "Madonna of the Book", "nEmerald Carrot", "The End of Summer", "Smokes against the world", "Solène, Slayer of Evil", "A Ravens Call"];
-  json.reverse();
+  let cardArtworks = ["Lia", "Nipsey Hussle Memorial", "Tear", "Scenes", "Krishna", "The Bard of Avon", "The End of Summer", "Moonlight", "face", "Vidal Sassoon", "Solène, Slayer of Evil", "A Ravens Call"];
+  
+  
+  // json.reverse();
+
   //Array to store URLs of the slideshow images
   let cardURLs = [];
   //Array to store Name of the art
@@ -114,50 +197,58 @@ $.getJSON("../../api/submission.json", function(json) {
   getImages(cardArtworks,cardURLs,cardArtist,cardArtworks2);
   
 
-  for (let i = 0; i < 9; i++){
+  for (let i = 0; i < cardArtworks.length; i++){   
+    card = `
+      <br>       
+      <div class="card">        
+        <img class="card-img" src="${cardURLs[i]}" alt="IMAGE NOT FOUND"> 
+        <div class="card-body">
+          <h4 class="card-text1">${cardArtworks2[i]}</h4>
+          <p class="card-text2 artistName">${cardArtist[i]}</p>
+        </div>   
+      </div> `       
+      
+    $(".gallery").append(card);
 
-    var card = `
-    
-    <div class="img">
-      <img class="card-img-top" src="${cardURLs[i]}" alt="IMAGE NOT FOUND">      
-      <h4 class="slide-text1">${cardArtist[i]}</h4>
-      <p class="slide-text2 artistName">${cardArtworks2[i]}</p>
-    </div>`
-    
-    $(".gallery").append(card);    
+  } 
 
+  // CODE FOR THE SLIDE SHOW
+  var slideIndex = 0;
+  var slides, dots;
+  
+  if(document.querySelector(".dot-container")){
+    slides = document.getElementsByClassName("slides");
+    dots = document.getElementsByClassName("dot");    
+    showSlides();
   }
 
-
-    // CODE FOR THE SLIDE SHOW
-    var slideIndex = 0;
-   
-    showSlides();
-    var timer;
-    function showSlides() {
-      var i;
-      var slides = document.getElementsByClassName("slides");
-      var dots = document.getElementsByClassName("dot");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " active";
-      timer = setTimeout(showSlides, 8000);
+  
+  var timer;
+  function showSlides() {
+    var i;
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
     }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active-dot";
+    timer = setTimeout(showSlides, 8000);
+  }
 
-    window.currentSlide = function(n){
-      clearInterval(timer);
-      delete(timer);
-      showSlides(slideIndex = n);
-    }    
- 
+  window.currentSlide = function(n){
+    clearInterval(timer);
+    delete(timer);
+    showSlides(slideIndex = n);
+  }   
+
+
 });
+
+
 
 
 
