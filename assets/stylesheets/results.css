@@ -25,7 +25,7 @@ body{
 /* Navigation styles for this page are linked to the index.css code, so
 the styles for the navigation here just override the ones in the index.css*/
 .main-nav{
-    background: #E3F2FD;
+    background: #ffffff;
 }
 
 .search-hero{
@@ -35,43 +35,14 @@ the styles for the navigation here just override the ones in the index.css*/
     /* background-image: url(https://drive.google.com/u/1/uc?usp=forms_web&id=1gqPBsuh_OMdeCl0hQu-H4KdTzmQkwVMr);
     background-size: cover;
     background-position: top; */
-    background: rgba(227, 242, 253, 1.0);
+    /* background: rgba(227, 242, 253, 1.0);
     background: -webkit-linear-gradient(top, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));
     background: -moz-linear-gradient(top, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));
-    background: linear-gradient(to bottom, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));    
-}
+    background: linear-gradient(to bottom, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));     */
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-.hamburger-nav{
-    order: 2;
-}
-
-.nav-list{
-    width: 20em;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: unset;
-    right: -100%;
-    /* background: #e3f2fd; */
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%;
-    border-bottom-left-radius: 50%;
-    transition: all .4s;
-    padding-top: 6rem; 
-    z-index: 40;
-}
-
-/* Apply this style when the nav has an open state */
-.open .nav-list{  
-    left: unset;  
-    right: 0;
-    box-shadow: 12px 0 20px rgba(0, 0, 0, .6);
-}
-
-.logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .page-header{
@@ -136,17 +107,10 @@ img{max-width: 100%;}
     transform: scale(1,0);
     transition: 0.2s;
     z-index: 5000;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 /* Scroll tip for when image is clicked and zoomed in */
-.scrollTip{
-    font-size: 2.3em;
-    text-transform: uppercase;
-    text-align: center;
-    display: none;
-}
-
 .gallery-lightbox:target{
     transform: scale(1,1);
 }
@@ -157,6 +121,10 @@ img{max-width: 100%;}
 }
 
 .gallery-lightbox-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
     max-width: 90%;
     background: #ffffff;
     padding: 1em;
@@ -165,6 +133,9 @@ img{max-width: 100%;}
 
 .gallery-lightbox-content img{
     margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 5200;    
 }
 
 .gallery-lightbox-content h3{
@@ -209,19 +180,32 @@ input[type=checkbox] {
 
 label > input[type=checkbox]:checked ~ img{
     transform: scale(1.8);
-    transform-origin: 50% -0.5%;
+    transform-origin: 42% -5%;
     cursor: zoom-out;
-    transition: all .4s;
+    transition: all .5s;
 }
+
+label > input[type=checkbox]:checked ~ p{
+    display: block;
+    color: red;
+    top: 2px;
+    left: 2px;
+    font-size: 13px;
+    transition: all 2s;
+}
+/* ===================== END OF IMAGE ZOOM-IN SECTION ============================= */
+
 
 .search-field{
     background: none;
     border: none;
     outline: none;
-    border-bottom: 1px solid #b9b9b9c2;    
+    border-bottom: 1px solid #b9b9b9c2;  
+    border-radius: 0; 
     color: rgb(224, 224, 224);
     font-size: 2rem; 
     width: 80%;
+    padding-left: 0;
 } 
 
 .search-form{
@@ -235,7 +219,6 @@ label > input[type=checkbox]:checked ~ img{
     background-color: rgba(0, 0, 0, 0.637); 
     transition: none;
     border-radius: 7px;   
-    
 }
 
 .search-field:focus{
@@ -299,10 +282,44 @@ label > input[type=checkbox]:checked ~ img{
     border-top-left-radius: 5%;
     text-decoration: none;
     padding: 10px 25px;
-    background: rgba(138, 1, 1, 0.699);
+    background: rgba(206, 0, 0, 0.877);
     visibility: hidden;
     color: #ffffff;
+    z-index: 120;
 }
+
+/* Styles for text that lets user know they can click image to zoom in */
+.click-alert{
+    width: 255px;
+    padding: 1rem 10px; 
+    position: fixed;
+    display: none;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -127.5px; /* Centers items in combination with left: 50% */
+    font-size: 15px; 
+    color: #ffffff;
+    text-align: center;
+    z-index: 5200;
+    border-radius: 10px;
+    background: rgba(255, 8, 8, 0.932);
+}
+
+.click-alert i{
+    font-size: 21px;
+    padding-right: 3px;
+}
+
+/* Styles for text that lets user know they can scroll if image too big */
+.scroll-tip{
+    position: absolute;
+    display: none;
+    width: 100%;
+    z-index: 5000;
+    text-align: center;    
+    color: #000000;
+}
+
 
 /* Change hamburger nav and link to black */
 .bars, .bars::before,
@@ -365,13 +382,18 @@ label > input[type=checkbox]:checked ~ img{
 }
 
 @media only screen and (min-width: 600px){
-    /* .gallery-lightbox-content h3{
-        font-size: 20px;
+    .gallery-lightbox{
+        overflow-x: hidden;
     }
-    
-    .gallery-lightbox-content p{
-        font-size: 15px;
-    } */
+
+    label > input[type=checkbox]:checked ~ img{
+        transform: scale(1.8);
+        transform-origin: center -7%;
+    }
+
+    label > input[type=checkbox]:checked ~ p{
+        font-size: 17px;
+    }
 
     .search-form{
         width: 90vw;
@@ -410,19 +432,9 @@ label > input[type=checkbox]:checked ~ img{
         padding-top: 5vh;
     }
 
-    .nav-list{
-        order: 2;
-        width: 45%;
-        height: unset;
-        position: unset;
-        background: none;
-        display: flex;
-        align-items: center;        
-        padding: 0;
-        /* transform: translateY(-40px);
-        opacity: 0;
-        transition: .7s;  */
-        border-radius: unset;       
+    /* Remove the left margin margin applied to the homepage nav item since we don't have to deal with a search bar here */
+    .logo, .nav-list{
+        margin-left: 0;
     }
 }
 

@@ -52,29 +52,22 @@
                     <li class="nav-item">
                         <a href="contact.html/#Donate" class="nav-link donate">Donate</a>
                     </li>
+
+                    <li class="nav-item">
+                        <div class="search">
+                            <input type="search" class="search-field field_1" name="art-search"  placeholder=""  value="Search for art..." autocomplete="off" onmousedown="active();" onblur="inactive();" required>
+                            <input id="submit" type="submit" class="submit-btn" onclick="getData(searchBar.value);  storeSearchData(); window.location='results.html';" value="Search">
+                        </div> 
+                    </li>
                 </ul>
 
-                <!-- Search form trigger -->
-                <button class="search-btn" id="srch">
-                    <i  class="fa fa-search"></i>
-                </button> 
-
-                <!-- Search form to navigate through website. -->
-                <div class="search-box">
-                    <div class="search-form">
-                        <input type="search" class="search-field field_1" name="art-search"  placeholder=""  value="Search..." autocomplete="off" onmousedown="active();" onblur="inactive();" required>
-                        <input id="submit" type="submit" class="submit-btn" onclick="getData(searchBar.value);  storeSearchData(); window.location='results.html';" value="&#8594">
-                    </div>
-                </div>
+                               
             </nav>
-
         </header>
-
         <!-- End of headers -->
 
         <!-- Page's main content -->
         <main>
-
             <!-- Hero -->
             <article class="hero" id="start">               
                 
@@ -91,15 +84,16 @@
                 <div class="scroll">
                     <a class="scroll-btn" href="#/" onclick="window.scrollTo(0, 780);"><i class="fa fa-arrow-down"></i></a>
                 </div> 
-    
+                
+
+                <!-- Wave SVG -->
                 <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#ffffff" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,144C384,117,480,75,576,85.3C672,96,768,160,864,186.7C960,213,1056,203,1152,170.7C1248,139,1344,85,1392,58.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                 </svg>                
     
             </article>
 
-             <!-- Slideshow section -->        
-            <!-- <div id="slide" class="jumpTo">THIS</div> -->
+            <!-- Slideshow section --> 
             <article class="artwork-slideshow">
                 <h2 class="slideshow-header">Featured Artworks</h2>         
                 <div class="artwork-container"></div>
@@ -119,7 +113,6 @@
                 <h2 class="gallery-header">Other Artworks</h2>
                 <div class="gallery"></div> 
             </article>
-
 
             <!-- Update section -->  
             <article class="updates">
@@ -146,13 +139,10 @@
                         Ms. Lal, the staff from both schools who are involved in the creation of the site, and especially all of the talented artist contributors.
                     </p>
                 </div>               
-                
             </article> 
-
         </main>
 
-        <footer>
-            
+        <footer>            
             <div class="social">
                 <h2>Stay Connected</h2>
                 <p>Follow us on:</p>

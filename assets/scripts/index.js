@@ -1,20 +1,3 @@
-// window.onload=function(){
-//   setTimeout(menu1, 1000);
-// }
-
-
-
-// CODE FOR THE PAGE FADE-IN ANIMATE
-// function menu1(){
-//   var links = document.querySelectorAll(".nav-list, .logo, .search-btn, .search-box, .content-textbox, .hero-content, .hamburger-nav, .hero-img, .hero-textbox");
-//   for(var i=0; i < links.length; i++){
-//       links[i].style.opacity = '1';
-//       links[i].style.transform = 'translate(0)';
-//   }
-
-// }
-// END OF FADE-IN ANIMATE CODE
-
 
 // CODE FOR MENU TOGGLE
 var mainNav;
@@ -25,14 +8,9 @@ if(document.querySelector('.main-nav')){
     menu = document.querySelector('.hamburger-nav');
     menu.addEventListener('click', function(){
       mainNav.classList.toggle('open');
-    })
-    
+    })    
   }
 }
-
-
-
-
 
 
 // Change he navbar background when we scroll
@@ -60,35 +38,31 @@ if(document.querySelector(".hero-textbox")){
   observerOne.observe(heroText);
 }
 
-
-//CODE FOR SEARCH TOGGLE
-const search_contianer = document.querySelector('.fa-search');
-const searchBox = document.querySelector('.search-box');
-search_contianer.addEventListener('click', function(){
-  search_contianer.classList.toggle("fa-times");
-  search_contianer.classList.toggle("down");
-  searchBox.classList.toggle('showSearch');
-  search_contianer.classList.toggle("invertSearchIcon");
-  mainNav.classList.toggle('invert-menu');
-})
-
-
 var results = [];
 var searchBar = document.querySelector('.search-field');
 
 // Change the place holder in the input when you click on it
 function active(){
-  if(searchBar.value == 'Search...'){
+  if(searchBar.value == 'Search for art...'){
     searchBar.value = '';
-    searchBar.placeholder = 'Search...';
+    searchBar.placeholder = 'Search for art...';
   }
 }
 
 function inactive(){
   if(searchBar.value == ''){
-    searchBar.value = 'Search...';
+    searchBar.value = 'Search for art...';
     searchBar.placeholder = '';
   }
+}
+
+
+// Clear search bar value after search query
+const resetSearchBar = () =>{
+  function reset(){
+    searchBar.value = "Search for art...";
+  }
+  reset();
 }
 
 
@@ -104,6 +78,7 @@ document.querySelector('.search-field').onkeypress = function(e) {
     console.log(returnSearch);
 
     getData(searchBar.value);
+    resetSearchBar();
     return false;
   }
 }
@@ -112,7 +87,6 @@ const storeSearchData = function(){
   sessionStorage.setItem('newTerm', searchBar.value);
   window.location = "results.html";
 }
-
 
 //This applies to external pages that come to this page
 if(document.querySelector('.field_1')){
@@ -132,10 +106,7 @@ if(document.querySelector('.field_1')){
 
 }
 
-
-
-
-
+// This is all the images cards on the home page
 var card;
 
 $.getJSON("../../api/submission.json", function(json) {
@@ -182,11 +153,8 @@ $.getJSON("../../api/submission.json", function(json) {
 
 
   //Array of name of artworks to use for slideshow
-  let cardArtworks = ["Lia", "Nipsey Hussle Memorial", "Tear", "Scenes", "Krishna", "The Bard of Avon", "The End of Summer", "Moonlight", "face", "Vidal Sassoon", "Solène, Slayer of Evil", "A Ravens Call"];
+  let cardArtworks = ["Lia", "Nipsey Hussle Memorial", "Tear", "Cactus", "Krishna", "The Bard of Avon", "The End of Summer", "Moonlight", "face", "Vidal Sassoon", "Solène, Slayer of Evil", "A Ravens Call"];
   
-  
-  // json.reverse();
-
   //Array to store URLs of the slideshow images
   let cardURLs = [];
   //Array to store Name of the art
@@ -195,7 +163,6 @@ $.getJSON("../../api/submission.json", function(json) {
   let cardArtworks2 = [];
   //This function get image URLs in the jason file based on the name of the artwork
   getImages(cardArtworks,cardURLs,cardArtist,cardArtworks2);
-  
 
   for (let i = 0; i < cardArtworks.length; i++){   
     card = `
@@ -209,7 +176,6 @@ $.getJSON("../../api/submission.json", function(json) {
       </div> `       
       
     $(".gallery").append(card);
-
   } 
 
   // CODE FOR THE SLIDE SHOW
@@ -222,7 +188,7 @@ $.getJSON("../../api/submission.json", function(json) {
     showSlides();
   }
 
-  
+  // Slideshow controls
   var timer;
   function showSlides() {
     var i;
@@ -243,9 +209,7 @@ $.getJSON("../../api/submission.json", function(json) {
     clearInterval(timer);
     delete(timer);
     showSlides(slideIndex = n);
-  }   
-
-
+  } 
 });
 
 

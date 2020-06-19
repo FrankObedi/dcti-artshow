@@ -7,32 +7,9 @@
     --menu-bg-color: #e3f2fd3f;
     --nav-link-color: #ffffff;
     --nav-link-hover: #ffffff;
-    --search-btn-color: #ffffff;
-    --search-btn-size: 20px;
-    --nav-icon-color: #ffffff;
-    --logo-color: #ffffff;
-    --logo-color2: #ffffff;    
-    --blue: #007bff;
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --red: #dc3545;
-    --orange: #fd7e14;
-    --yellow: #ffc107;
-    --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
-    --white: #fff;
-    --gray: #6c757d;
-    --gray-dark: #343a40;
-    --primary: #007bff;
-    --secondary: #6c757d;
-    --success: #28a745;
-    --info: #17a2b8;
-    --warning: #ffc107;
-    --danger: #dc3545;
-    --light: #f8f9fa;
-    --dark: #343a40;
+    --nav-btn-color: #cdeaffd5;
+    --nav-btn-border-color: #cdeaffd5;
+    --logo-color: #ffffff;   
 }
 
 html{
@@ -87,32 +64,22 @@ header{
     justify-content: space-around;
     background: var(--menu-bg-color);
     transition: background 0.5s;
+    box-shadow: 0 2px 15px -5px rgba(0, 0, 0, .6);
 }
 
-.invert-menu{
-    --menu-bg-color: #000000; 
-    --nav-link-color: #ffffff;
-    color: var(--nav-link-color);  
-    --search-btn-color: 30px;   
-    --search-btn-size: 30px; 
-    --nav-icon-color: #ff0000;
-    --nav-link-hover: #ffffff;
-}
 
 .onscroll-menu{
-    --menu-bg-color: #e3f2fd;  
+    --menu-bg-color: #ffffff;  
     --nav-link-color: #000000; 
-    --search-btn-color: #000000;
-    --nav-icon-color: #000000;
+    --nav-btn-color: #d6eeff;
+    --nav-btn-border-color: #b3dfff;
     --logo-color: #000000;
     --nav-link-hover: #000000;
-    /* --logo-color2: #7fff2ac5; */
-    --logo-color2: #000000;
     transition: all 0.5;
 }
 
 .logo{
-    order: 2;   
+    order: 1;  
 }
 
 .logo a{
@@ -120,7 +87,6 @@ header{
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 1.3rem;
     text-align: center;
     color: var(--logo-color);
 }
@@ -140,42 +106,26 @@ header{
     /* color: var(--logo-color);     */
 /* } */
 
-/* .logo-img{
-    width: 25%;
-    justify-self: center;
-}
-
-.logo-textbox h3{
-    font-weight: 80;
-    color: var(--logo-color2);
-}
-
-.logo-textbox{
-    justify-self: center;
-    display: none;
-} */
 
 
 /* Commented out code removes the animation */
 .hamburger-nav{
-    order: 1;
-    height: 2rem;
-    width: 2.5rem;
+    order: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 4px;
     z-index: 50;
-    /* transform: translateY(-40px);
-    opacity: 0;
-    transition: .7s; */
+    background: var(--nav-btn-color);
+    border: 1px solid var(--nav-btn-border-color);
+    padding: 18px 10px; 
 }
 
 .bars{
-    width: 1.8rem;
+    width: 25px;
     height: 2px;
-    background-color: var(--nav-icon-color);
+    background-color: #000000;
     display: inline-block;
     position: relative;
     transition: all .5s;
@@ -187,7 +137,7 @@ header{
     position: absolute;
     width: inherit;
     height: inherit;
-    background-color: var(--nav-icon-color);
+    background-color: #000000;
     transition: all .4s;
 }
 
@@ -205,40 +155,35 @@ header{
 
 .open .bars::before{
     top: 0;
-    background-color: #ff4545;
+    /* background-color: #ff4545; */
     transform: rotate(135deg);
 }
 .open .bars::after{
     top: 0;
-    background-color: #ff4545;
+    /* background-color: #ff4545; */
     transform: rotate(-135deg);
 }
 
 .nav-list{
-    width: 20em;
+    width: 100%;
     height: 100vh;
     position: absolute;
     top: 0;
-    left: -100%;
+    right: -100%;
     background: #e3f2fd;
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 50%;
     transition: all .4s;
     padding-top: 6rem; 
     z-index: 40;
 }
 
 /* Apply this style when the nav has an open state */
-.open .nav-list{    
-    left: 0;
+.open .nav-list{   
+    right: 0;
     box-shadow: 12px 0 20px rgba(0, 0, 0, .6);
 }
 
-.open .hamburger-nav{
-    margin-left: -3%;
-    transition: margin 0.5s;
-} 
 
+/* Apply this style when the nav has an open state */
 .open .nav-link{
     display: block;
 }
@@ -252,11 +197,10 @@ header{
     text-decoration: none;
     display: block;
     color: var(--nav-link-color);
-    font-size: 1.8rem;
-    text-align: left;
+    font-size: 1.3rem;
+    text-align: center;
     text-transform: uppercase;
-    padding-bottom: .5rem;
-    margin-left: 5rem;
+    padding-bottom: 1rem;
     transition: all .5s;
 }
 
@@ -269,85 +213,29 @@ header{
     color: var(--dark);    
 }
 
-
-/* Search Form Styles */
-.search-btn{
-    order: 3;
-    font-size: var(--search-btn-size);
-    color: var(--search-btn-color);
-    background: none;
-    padding: 10px 12px;
-    border: none;
-    outline: none;
-    cursor: pointer; 
-    /* transform: translateY(-40px);
-    opacity: 0;
-    transition: .7s; */
-}
-
-.search-box{
-    position: absolute;
-    top: 70px;
-    width: 100vw;
-    height: 100%;
-    background: rgba(0, 0, 0, .6);  
-    display: none;
-    z-index: 2;
-}
-
-.showSearch{
-    display: block;
-    z-index: 2;
-}
-
-.search-form{
-    width: 100vw;
-    height: 25rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s;
-    animation: slideDown 0.5s;
-    background-color: #000000;
-}
-
 .invertSearchIcon{
     color: #ffffff;
 }
 
-.down{
-    transform: translateY(75px);
-    transition: ease-in-out 0.5s;
-}
-.search-btn{
-    z-index: 20;
-}
 
-@keyframes slideDown{
-    0%{
-        height: 0;
-    }
-   
-    100%{
-        height: 25rem;
-    }
+.search{
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-field{
-    background: none;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #5c5c5c;    
-    color: rgb(224, 224, 224);
-    font-size: 2rem; 
-    width: 80%;
+    background: #ffffff;
+    padding: 8px 0 8px 15px;
+    border: 1px solid #969696;
+    border-radius: 5px 0 0 5px;
+    outline: none;   
+    color: #000000;
+    font-size: 17px;
+    width: 13rem;
 } 
-
-.search-field:focus{
-    border-bottom: 1px solid #ff4545; 
-    color: #FFF;
-}
 
 .search-field::before{    
     content: " ";
@@ -361,16 +249,28 @@ header{
     transition: all 0.3s ease-in-out;
 }
 
+/* This remove the "X" that appears in the search inpout    ─Remove and trying using the search to see what it does */
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 .submit-btn{
-    position: absolute;
-    right: 10%;
-    font-size: 3rem;
-    padding-bottom: 25px;
-    background: none;
-    border: none;
-    outline: none;
     color: #ffffff;
-    cursor: pointer;
+    padding: 8px 11px;
+    font-size: 17px;
+    outline: none;
+    background-color: #424242;
+    border: 1px solid #424242;
+    border-radius: 0 5px 5px 0;
+    border-left: 0;
+    transition: all 0.5s;
+}
+
+.submit-btn:hover{
+    background-color: #000000;
 }
 
 /* END OF MOBILE NAVBAR */
@@ -406,9 +306,6 @@ main{
     margin-top: 5em;
     text-align: left;
     color: #ffffff; 
-    /* transform: translateX(-40px);
-    opacity: 0;
-    transition: .7s; */
 }
 
 .hero-textbox h2{ 
@@ -423,7 +320,6 @@ main{
     text-align: left;
     margin: 0 auto;
     width: 90%;  
-    /* text-shadow: 2px 2px 0px rgb(39, 39, 39), 5px 4px 0px rgba(0, 0, 0, 0.336); */
 } 
 
 .welcome{
@@ -466,7 +362,6 @@ main{
 
 
 /* Slideshow styles */
-
 .artwork-slideshow{
     width: 100%;
     margin: 0 auto;
@@ -474,11 +369,10 @@ main{
     transition: all .5s;   
 }
 
-
 .slideshow-header{
     color: #000000;    
     padding: 1.3em 0 20px 0;
-    font-size: 2.89em;
+    font-size: 2.5em;
     text-align: center;
 }
 
@@ -506,11 +400,9 @@ main{
     vertical-align: bottom;
     margin: 0 auto;
     animation: slideIn ease 0.5s;
-    border: 10px solid #000000;
-    padding: 10px
+    border: 12px solid #000000;
+    padding: 12px
 }
-
-
 
 @keyframes slideIn {
     0% {
@@ -597,15 +489,21 @@ main{
     width: 100%;
     margin: 5em auto 0 auto;
     transition: all .5s;
-    background: #231F20;
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(105, 105, 105, 0.185)  15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(105, 105, 105, 0.185) 15%, transparent 20%) 8px 9px;
+    background-color:#161616;
+    background-size:16px 16px;
     padding: 3em 2em;
     text-align: center;
 }
 
 .gallery-header{
     color:#fff;
-    font-size: 2.89em;
-    padding: 55px
+    font-size: 2.5em;
+    padding: 45px
 }
 
 .gallery{
@@ -627,7 +525,9 @@ main{
     break-inside: avoid-column;         
     display:table; 
     color: #ffffff;
-    background: #fff;
+    background: #ffffff;
+    border-radius: 3px;
+    padding: 5px;
 }
 
 .gallery .card img{
@@ -639,6 +539,7 @@ main{
     background: #fff;
     color: #000000;
     padding-bottom: 15px;
+    border-radius: 5px;
 }
 
 /* Start of updates section */
@@ -646,10 +547,8 @@ main{
 .updates{
     display: flex;
     color: #000;
-    background: #ee0979;
-    background: -webkit-linear-gradient(to top, #ee0979, #ff6a00);
-    background: linear-gradient(to top, #ee0979, #ff6a00); 
-
+    background: #be0101;
+    background: linear-gradient(to top, #8005af, #fe003e);
     width: 100%;
     padding: 2em;
     justify-content: center;
@@ -769,7 +668,6 @@ footer{
     background: #000000;
     font-size: 0.9em
 }
-
 
 
 /* Media Queries */
@@ -989,23 +887,19 @@ footer{
         left: 0;
     }
 
+    .search-field{
+        width: 17rem;
+    }
+
 }
 
 
 /* Make logo bigger */
-
 @media screen and (min-width: 600px){
     .logo a{
-        font-size: 1.7rem;
+        font-size: 1.3rem;
     }
-
-    .open .hamburger-nav{
-        margin-left: -8%;
-        transition: margin 0.5s;
-    } 
 }
-
-
 
 
 /* when swith is 900x or greater resize the svgs for the 
@@ -1048,9 +942,8 @@ footer{
 }
 
 
-
 /* For laptops  */
-@media (min-width: 1000px){
+@media (min-width: 1200px){
 
     /* START OF DESKTOP NAVBAR */
     .hamburger-nav{
@@ -1059,6 +952,10 @@ footer{
     
     .menu{
         display: none;
+    }
+
+    .logo{
+        margin-left: -10rem; 
     }
 
     .nav-list{
@@ -1071,10 +968,8 @@ footer{
         align-items: center; 
         justify-content: center;       
         padding: 0;
-        /* transform: translateY(-40px);
-        opacity: 0;
-        transition: .7s;  */
-        border-radius: unset;        
+        border-radius: unset;    
+        margin-left: -15rem;    
     }
 
     .nav-item{
@@ -1144,12 +1039,6 @@ footer{
         max-height: 490px;
     }
 
-    /* .slide-body{
-        width: 22%;
-        text-align: left;
-        margin: 0 30rem;
-    } */
-
     .slide-name{
         font-size: 1.4em;
     }
@@ -1157,18 +1046,13 @@ footer{
     .slide-text{
         font-size: 1.1em;
     }
-
-    /* .dot-container{
-        width: 300px;
-        margin: 0 auto;
-        margin-top: -70px;
-        justify-content: flex-end;
-    } */
-    
 }
 
 /* For Desktop */
 @media (min-width: 1600px){
+    .nav-list{
+        margin-right: -10rem;
+    }
     .hero-textbox{
         text-align: left; 
         margin: -25em 0 0 0;   
@@ -1245,18 +1129,11 @@ footer{
         padding-bottom: 45px;
         font-size: 3.5em;
     }
-
 }
 
 
 
-/* This remove the "X" that appears in the search inpout    ─Remove and trying using the search to see what it does */
-input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 
 
 

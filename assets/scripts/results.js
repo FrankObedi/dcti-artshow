@@ -35,13 +35,30 @@ if(document.querySelector(".page-header")){
 }
 
 
+//Function to fade in and out the alert that tells users they can click on image to zoom in
+const showPopUp = () =>{
+  fade_in();
+
+  function fade_in() {
+    // This is a p tag in results.html
+    $(".click-alert").fadeIn();
+  
+    //in this function we can start to fade out after 2 seconds
+    setTimeout(fade_out, 2000);
+  }
+  //function to fade out
+  function fade_out() {
+    $(".click-alert").fadeOut();
+  }
+}
+
 var searchTerm = [];
 
 $.getJSON("../../api/submission.json", function(json) {
   for (let i = 0; i < json.length; i++) {
     var thumbnail = `
     <div class="gallery-item all art ${json[i]["Grade"]} ${json[i]["Name"].toLowerCase()} ${json[i]["Teacher"].toLowerCase()} ${json[i]["School"].toLowerCase()} ${json[i]["Art-Name"].toLowerCase()} ${json[i]["Category"].toLowerCase()} ${json[i]["Style"].toLowerCase()} ${json[i]["Theme"].toLowerCase()} ${json[i]["Subject"].toLowerCase()} ">
-      <a href="#${i}" class="button">
+      <a href="#${i}" class="button" onclick="showPopUp();">
         <img src="${json[i].URL}">
       </a>
     </div>`
@@ -61,10 +78,10 @@ $.getJSON("../../api/submission.json", function(json) {
     <div id="${i}" class="gallery-lightbox">
       <div class="gallery-lightbox-content">
           <a href="#/" class="close"></a>
-          <p class="scrollTip">Scroll to see full image</p>
           <label>
             <input type="checkbox" id="zoomCheck">
             <img class="lightbox-img" src="${json[i].URL}">
+            <p class="scroll-tip">Scroll if image is too large</p>
           </label>
           <div class="text-box">
             <div class="box-1">
@@ -94,9 +111,7 @@ $.getJSON("../../api/submission.json", function(json) {
     var lightboxImages = document.querySelectorAll(".lightbox-img");
     var lightboxImageContainer = document.querySelectorAll(".gallery-lightbox");
     var lightboxImageContent = document.querySelectorAll(".gallery-lightbox-content");
-    
 
-    
 
     for(i = 0; i < imageCard.length; i++){    
 
