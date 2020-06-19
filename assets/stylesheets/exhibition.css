@@ -1,22 +1,22 @@
 /********************   Body Elements   ********************/
-
 .portfolio {
     padding: 5% 0 10% 3%;
 }
 
-.col-2 {
-    padding: 5% inherit;
+.filter {
+    padding: 25% 0;
 }
 
 .jumbotron {
-    background: url("/assets/img/exhibition.svg") no-repeat;
+    background: url("/assets/img/exhibition-hero.svg") no-repeat;
     background-size: cover;
     margin: 4% 7% 0%;
-    min-height: 500px;
-    /* background: linear-gradient(156deg, rgba(254, 172, 94, 1) 0%, rgba(199, 121, 208, 1) 49%, rgba(75, 192, 200, 1) 100%); */
+    min-height: 560px;
+    
     text-align: left;
     vertical-align: middle;
     position: relative;
+    border: 2px solid rgb(234,236,239);
 }
 
 .hero-text {
@@ -37,8 +37,8 @@
     margin: 4% 0%;
 }
 
-.card-columns {
-    column-count: 4;
+.card-img-top {
+    cursor: pointer;
 }
 
 
@@ -211,12 +211,6 @@ footer p {
 
 /********************   Media Queries   ********************/
 
-@media(min-width: 62px) {
-    .card-columns {
-        column-count: 1;
-    }
-}
-
 @media (max-width: 575px) {
     .nav-item {
         text-align: center;
@@ -231,5 +225,9 @@ footer p {
     img {
         display: block;
         margin: 0 auto;
+    }
+
+    .footer-block {
+        text-align: center;
     }
 }

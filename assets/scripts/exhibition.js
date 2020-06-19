@@ -6,7 +6,7 @@ $.getJSON("../../api/csvjson.json", function(json) {
   for (let i = 0; i < 10/*json.length*/; i++) {
     let card = `
     <div id="${i}" class="card isotope-item ${json[i]['name']} ${json[i]['school']} ${json[i]['grade']} ${json[i]['teacher']} ${json[i]['artName']} ${json[i]['category']} ${json[i]['orientation']}">
-      <img class="card-img-top" src="${json[i].URL}" title="${json[i]['artName']}" artist="${json[i]['name']}" alt="Image not found">
+      <img class="card-img-top" src="${json[i].URL}" title="${json[i]['artName']}" artist="${json[i]['name']}" statement="${json[i]['statement']}" alt="Image not found">
       <div class="card-body">
         <h5 class="card-title">${json[i]['artName']}</h5>  
         <p class="card-title">${json[i]['name']}</p>
@@ -62,8 +62,8 @@ for (let prop in filter) {
   else {
     let item = `
     <div class="card filter-item">
-      <div class="card-body">
-        <h5 class="card-title">${capitalizeFirstLetter(prop)}</h5>`
+      <h5 class="card-header">${capitalizeFirstLetter(prop)}</h5>
+      <div class="card-body">`
     for (let val of filter[prop]) {
       item += `
         <div class="custom-control custom-checkbox">
@@ -174,7 +174,7 @@ window.onload = function () {
     image: {
 			verticalFit: true,
 			titleSrc: function(item) {
-				return item.el.attr('title') + ' &middot; '+ item.el.attr("artist");
+				return item.el.attr('title') + ' &middot; '+ item.el.attr("artist") + `<small>${item.el.attr('statement')}</small>`;
 			}
     },
     zoom: {
@@ -188,6 +188,4 @@ window.onload = function () {
       }
     }
   });
-
-  var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 } 
