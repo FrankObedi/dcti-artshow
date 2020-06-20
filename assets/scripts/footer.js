@@ -11,7 +11,7 @@ $.getJSON("/api/csvjson.json", function(json) {
   $("#name-select").append(item);
 });
 
-let messages = ["Awesome!", "Clever concept.", "Good Job!", "I love the choice of colours.", "Message of the piece is clearly communicated.", "Professional calibre work.", "Strong attention to details.", "This is really interesting and creative.", "This is beautiful.", "Woah, I'm amazed!", "Very humorous.", "Very inspiring.", "Your piece really made me think."];
+let messages = ["Awesome!", "Clever concept.", "Good Job!", "I love the choice of colours.", "Out of this world!", "Professional calibre work.", "Strong attention to details.", "This is really interesting and creative.", "This is beautiful.", "Woah, I'm amazed!", "Very humorous.", "Very inspiring.", "Your piece really made me think."];
 
 let item='';
 for (let mes of messages) {

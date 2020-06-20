@@ -3,7 +3,7 @@
 $.getJSON("../../api/csvjson.json", function(json) {
   console.log(json);
   let multAttr = ["theme", "style", "medium", "subject"];
-  for (let i = 0; i < 10/*json.length*/; i++) {
+  for (let i = 0; i < 40; i++) {
     let card = `
     <div id="${i}" class="card isotope-item ${json[i]['name']} ${json[i]['school']} ${json[i]['grade']} ${json[i]['teacher']} ${json[i]['artName']} ${json[i]['category']} ${json[i]['orientation']}">
       <img class="card-img-top" src="${json[i].URL}" title="${json[i]['artName']}" artist="${json[i]['name']}" statement="${json[i]['statement']}" alt="Image not found">
@@ -48,7 +48,7 @@ for (let prop in filter) {
     let item = `
     <div class="form-group">
       <label for="${prop}">${capitalizeFirstLetter(prop)}</label>
-      <select class="custom-select" id="${prop}">
+      <select class="custom-select filter-select" id="${prop}">
         <option value="" selected>All</option>`;
     for (let val of filter[prop]) {
       item += `
@@ -77,6 +77,7 @@ for (let prop in filter) {
     $(".filter").append(item);
   }
 }
+
 //Isotope Disabling Layout
 Isotope.Item.prototype._create = function() {
   // assign id, used for original-order sorting
@@ -113,7 +114,6 @@ Isotope.LayoutMode.create('none');
 window.onload = function () {
   var $grid = $('.portfolio').isotope({
     itemSelector: '.isotope-item',
-    percentPosition: true,
     //layoutMode: 'none',
     transitionDuration: 0
   });
@@ -157,6 +157,7 @@ window.onload = function () {
     
     console.log(filterValue );
     $grid.isotope({ filter: filterValue })
+    $(".portfolio").removeAttr("style");
 
   });
 
@@ -189,3 +190,4 @@ window.onload = function () {
     }
   });
 } 
+
