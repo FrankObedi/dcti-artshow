@@ -1,4 +1,7 @@
 
+document.cookie = "SameSite=None";
+
+
 // CODE FOR MENU TOGGLE
 var mainNav;
 var menu;
@@ -211,6 +214,8 @@ $.getJSON("../../api/csvjson.json", function(json) {
     showSlides(slideIndex = n);
   } 
 });
+
+
 
 
 

@@ -1,3 +1,7 @@
+
+document.cookie = "SameSite=None";
+
+
 $( document ).ready(function() {
   // window.scrollTo(0, 800);
   window.location.hash="1"; 
