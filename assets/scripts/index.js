@@ -109,7 +109,7 @@ if(document.querySelector('.field_1')){
 // This is all the images cards on the home page
 var card;
 
-$.getJSON("../../api/submission.json", function(json) {
+$.getJSON("../../api/csvjson.json", function(json) {
 
   //Array of name of artworks to use for slideshow
   let slideArtworks = ["Afar",  "Madonna of the Book", "nEmerald Carrot", "Smokes against the world"];
@@ -123,12 +123,12 @@ $.getJSON("../../api/submission.json", function(json) {
   
   const getImages = (imageArr, urlArr, artistArr, finalImageArr) =>{
     for(let i = 0; i < json.length; i++){
-      let index = json[i]["Art-Name"];
+      let index = json[i]["artName"];
       for(let j = 0; j < imageArr.length; j++){
         if(index == imageArr[j]){
           urlArr.push(json[i].URL);
-          artistArr.push(json[i]["First-Name"] + " " + json[i]["Last-Name"]);
-          finalImageArr.push(json[i]["Art-Name"]);
+          artistArr.push(json[i]["name"]);
+          finalImageArr.push(json[i]["artName"]);
         }
       }      
     }

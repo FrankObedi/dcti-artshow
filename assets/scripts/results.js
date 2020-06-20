@@ -54,10 +54,10 @@ const showPopUp = () =>{
 
 var searchTerm = [];
 
-$.getJSON("../../api/submission.json", function(json) {
+$.getJSON("../../api/csvjson.json", function(json) {
   for (let i = 0; i < json.length; i++) {
     var thumbnail = `
-    <div class="gallery-item all art ${json[i]["Grade"]} ${json[i]["Name"].toLowerCase()} ${json[i]["Teacher"].toLowerCase()} ${json[i]["School"].toLowerCase()} ${json[i]["Art-Name"].toLowerCase()} ${json[i]["Category"].toLowerCase()} ${json[i]["Style"].toLowerCase()} ${json[i]["Theme"].toLowerCase()} ${json[i]["Subject"].toLowerCase()} ">
+    <div class="gallery-item all art ${json[i]["grade"]} ${json[i]["name"].toLowerCase()} ${json[i]["teacher"].toLowerCase()} ${json[i]["school"].toLowerCase()} ${json[i]["artName"].toLowerCase()} ${json[i]["category"].toLowerCase()} ${json[i]["style"].toLowerCase()} ${json[i]["theme"].toLowerCase()} ${json[i]["subject"].toLowerCase()}">
       <a href="#${i}" class="button" onclick="showPopUp();">
         <img src="${json[i].URL}">
       </a>
@@ -67,11 +67,11 @@ $.getJSON("../../api/submission.json", function(json) {
     //if teacher add "Staff" to the lightbox image description
     //if a student write the grades number with the word "grade" in front of it.
     var personType;
-    if(json[i]["Grade"] == "Staff" || json[i]["Grade"] == "staff"){
+    if(json[i]["grade"] == "Staff" || json[i]["grade"] == "staff"){
       personType = "Staff";
     }
     else{
-      personType = "Grade " + json[i]["Grade"];
+      personType = "grade " + json[i]["grade"];
     }
 
     var model = `
@@ -85,12 +85,12 @@ $.getJSON("../../api/submission.json", function(json) {
           </label>
           <div class="text-box">
             <div class="box-1">
-              <h3 class="gallery-lightbox-art-name">${json[i]["Art-Name"]}</h3>
-              <p class="gallery-lightbox-artist">${json[i]["First-Name"] + " " + json[i]["Last-Name"]}</p>
+              <h3 class="gallery-lightbox-art-name">${json[i]["artName"]}</h3>
+              <p class="gallery-lightbox-artist">${json[i]["name"]}</p>
             </div>
             <div class="box-2">
               <p class="person-type">${personType}</p>
-              <p class="school">${json[i]["School"]}</p>
+              <p class="school">${json[i]["school"]}</p>
             </div>            
           </div>
       </div>
@@ -201,7 +201,7 @@ $.getJSON("../../api/submission.json", function(json) {
     // Clear previous searches
     searchTerm.splice(0, searchTerm.length);
 
-    var setTerm = newTerm.toLowerCase();
+    var setTerm = newTerm.toString().toLowerCase();
         
     // Scroll down to the content
     window.scrollTo(0, 740);
@@ -228,48 +228,18 @@ $.getJSON("../../api/submission.json", function(json) {
   
       //Switch statements for teacher names
       //people might put mr./ms. or might just put the teachers name so two cases are need
-      //for each teachers name 
-  
-      case "tsang":      
-        searchTerm.push("mr.tsang")
-        break;
-  
-      case "andrachuk":     
-        searchTerm.push("mr.andrachuk");
-        break;
-  
-      case "jokinen":     
-        searchTerm.push("ms.jokinen");
-        break;
-  
-      case "neub":     
-        searchTerm.push("ms.neub");
-        break;
-  
-      case "wilson":      
-        searchTerm.push("mr.wilson");
-        break;
-  
-      case "bryan":     
-        searchTerm.push("mr.bryan");
-        break;
-  
-      case "rozakis":      
-        searchTerm.push("ms.rozakis");
-        break;      
+      //for each teachers name  
         
       default:
         // This detects whether the search enter was a teachers name and if so, it corrects the name of the teacher
         // to match the way we want.
         if(setTerm.includes('.')){
-          var splitTerm = setTerm.split(". "); 
-          var joinString = splitTerm.join("."); 
-          this.console.log(joinString);
-          this.searchTerm.push(joinString);
+          var splitTerm = setTerm.split(". ")[1];
+          this.searchTerm.push(splitTerm);
         }
         // Defualt case is to just search for whatever user enters in the search field
         else{
-          this.searchTerm = newTerm.split(" ");
+          this.searchTerm = newTerm.toLowerCase().split(" ");
         }
         break;
     }
