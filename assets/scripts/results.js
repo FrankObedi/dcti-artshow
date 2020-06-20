@@ -1,6 +1,4 @@
 
-document.cookie = "SameSite=None";
-
 
 $( document ).ready(function() {
   // window.scrollTo(0, 800);
@@ -229,10 +227,21 @@ $.getJSON("../../api/csvjson.json", function(json) {
       case "grade 12":
         searchTerm.push("12");
         break;
-  
-      //Switch statements for teacher names
-      //people might put mr./ms. or might just put the teachers name so two cases are need
-      //for each teachers name  
+      
+      case "danforth":
+        searchTerm.push("danforthcti");
+        break;
+      
+      case "danforth cti":
+        tsearchTerm.push("danforthcti");
+
+      case "greenwood":
+        searchTerm.push("greenwoodss");
+        break;
+      
+      case "greenwood ss":
+        tsearchTerm.push("greenwoodss");
+        break;
         
       default:
         // This detects whether the search enter was a teachers name and if so, it corrects the name of the teacher
@@ -279,8 +288,3 @@ if(document.querySelector('.backToTop')){
       }
   };
 }
-
-
-// var trigger = document.querySelectorAll(".gallery-lightboxes");
-// var image = document.querySelectorAll(".gallery-lightbox");
-// var btn = document.querySelectorAll(".close");
