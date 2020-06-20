@@ -143,9 +143,9 @@ $.getJSON("../../api/submission.json", function(json) {
               
         // Display image not found if no results from search
         else{
-          newMessage.style.display = "block";
-          newMessage.style.backgroundColor = "#C5283D";
-          newMessage.innerHTML = "No images found, try again";
+          $(newMessage).hide();
+          document.querySelector(".searchError").style.display = "block";
+          window.location.hash = "errorMessage";
         }
       }
     } 
@@ -169,6 +169,7 @@ $.getJSON("../../api/submission.json", function(json) {
         newMessage.style.display = "block";
         newMessage.style.backgroundColor = "#0A0903";
         newMessage.innerHTML = "Click image to learn more";
+        document.querySelector(".searchError").style.display = "none";
       } 
 
       else if(itemsFound > 2 && itemsFound <= 4){
@@ -177,6 +178,7 @@ $.getJSON("../../api/submission.json", function(json) {
         newMessage.style.display = "block";
         newMessage.style.backgroundColor = "#0A0903";
         newMessage.innerHTML = "Click image to learn more";
+        document.querySelector(".searchError").style.display = "none";
       }     
 
       // if more than 4 are  found just display the thumbnail with regular size
@@ -185,6 +187,7 @@ $.getJSON("../../api/submission.json", function(json) {
         newMessage.style.display = "block";
         newMessage.style.backgroundColor = "#0A0903";
         newMessage.innerHTML = "Click image to learn more";
+        document.querySelector(".searchError").style.display = "none";
       }
 
       else{

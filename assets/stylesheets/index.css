@@ -7,8 +7,9 @@
     --menu-bg-color: #e3f2fd3f;
     --nav-link-color: #ffffff;
     --nav-link-hover: #ffffff;
-    --nav-btn-color: #cdeaffd5;
-    --nav-btn-border-color: #cdeaffd5;
+    --nav-btn-color: #41414183;
+    --nav-btn-border-color: #808080d5;
+    --bars-color: #ffffff;
     --logo-color: #ffffff;   
 }
 
@@ -67,12 +68,12 @@ header{
     box-shadow: 0 2px 15px -5px rgba(0, 0, 0, .6);
 }
 
-
 .onscroll-menu{
     --menu-bg-color: #ffffff;  
     --nav-link-color: #000000; 
-    --nav-btn-color: #d6eeff;
-    --nav-btn-border-color: #b3dfff;
+    --nav-btn-color: #303030;
+    --nav-btn-border-color: #303030;
+    --bars-color: #ffffff;
     --logo-color: #000000;
     --nav-link-hover: #000000;
     transition: all 0.5;
@@ -91,23 +92,6 @@ header{
     color: var(--logo-color);
 }
 
-
-
-/* Commented out nav stairs */
-/* .logo{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    order: 2; */
-    /* transform: translateY(-40px);
-    opacity: 0;
-    transition: .7s; */
-    /* color: var(--logo-color);     */
-/* } */
-
-
-
 /* Commented out code removes the animation */
 .hamburger-nav{
     order: 2;
@@ -125,7 +109,7 @@ header{
 .bars{
     width: 25px;
     height: 2px;
-    background-color: #000000;
+    background-color: var(--bars-color);
     display: inline-block;
     position: relative;
     transition: all .5s;
@@ -137,7 +121,7 @@ header{
     position: absolute;
     width: inherit;
     height: inherit;
-    background-color: #000000;
+    background-color: var(--bars-color);
     transition: all .4s;
 }
 
@@ -494,7 +478,7 @@ main{
         radial-gradient(black 15%, transparent 16%) 8px 8px,
         radial-gradient(rgba(105, 105, 105, 0.185)  15%, transparent 20%) 0 1px,
         radial-gradient(rgba(105, 105, 105, 0.185) 15%, transparent 20%) 8px 9px;
-    background-color:#161616;
+    background-color:#111111;
     background-size:16px 16px;
     padding: 3em 2em;
     text-align: center;

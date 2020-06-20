@@ -2,7 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Belgrano&display=swap');
 
+
 /* Color variables */
+:root{
+    --logo-color: #000000;
+    --nav-btn-color: #303030;
+    --nav-btn-border-color: #303030;
+    --nav-link-color: #000000;
+}
+
+
 html{
     height: 100%;
     scroll-behavior: smooth;
@@ -32,13 +41,6 @@ the styles for the navigation here just override the ones in the index.css*/
     width: 100vw;
     padding: 10rem 0;
     margin-top: -70px;
-    /* background-image: url(https://drive.google.com/u/1/uc?usp=forms_web&id=1gqPBsuh_OMdeCl0hQu-H4KdTzmQkwVMr);
-    background-size: cover;
-    background-position: top; */
-    /* background: rgba(227, 242, 253, 1.0);
-    background: -webkit-linear-gradient(top, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));
-    background: -moz-linear-gradient(top, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));
-    background: linear-gradient(to bottom, rgba(227, 242, 253, 1.0), rgba(76, 170, 255, 1.0));     */
     background: #12c2e9;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -180,7 +182,7 @@ input[type=checkbox] {
 
 label > input[type=checkbox]:checked ~ img{
     transform: scale(1.8);
-    transform-origin: 42% -5%;
+    transform-origin: 12% -5%;
     cursor: zoom-out;
     transition: all .5s;
 }
@@ -195,7 +197,6 @@ label > input[type=checkbox]:checked ~ p{
 }
 /* ===================== END OF IMAGE ZOOM-IN SECTION ============================= */
 
-
 .search-field{
     background: none;
     border: none;
@@ -203,7 +204,7 @@ label > input[type=checkbox]:checked ~ p{
     border-bottom: 1px solid #b9b9b9c2;  
     border-radius: 0; 
     color: rgb(224, 224, 224);
-    font-size: 2rem; 
+    font-size: 25px; 
     width: 80%;
     padding-left: 0;
 } 
@@ -320,23 +321,16 @@ label > input[type=checkbox]:checked ~ p{
     color: #000000;
 }
 
-
-/* Change hamburger nav and link to black */
-.bars, .bars::before,
-.bars::after{
-    background-color: #000000;
+.searchError{
+    width: 95vw;
+    margin: -2rem auto 2rem auto;
+    display: none;
 }
 
-.nav-link, .nav-list, .logo a{color: #000000;}
-
-.nav-link:hover{color: #000000;}
-
-.nav-link::before{background-color: #000000;}
-
-.open .nav-link{
-    --nav-link-color: #0000000;
-    color: var(--nav-link-color);
+.searchError img{
+    width: 100%;
 }
+
 
 @media only screen and (min-width: 400px) and (max-height: 420px){
     .gallery-lightbox-content{
@@ -356,7 +350,17 @@ label > input[type=checkbox]:checked ~ p{
     .gallery-lightbox-content h3{
         font-size: 15px;
     }
+
+    .searchError{
+        width: 45vw;
+    }
+
+    .search-field{
+        font-size: 2rem;
+    }
+
 }
+
 
 @media only screen and (min-width: 500px){
     
@@ -377,7 +381,16 @@ label > input[type=checkbox]:checked ~ p{
     }
 
     .submit-btn2{
-        right: 9%;
+        right: 14%;
+    }
+
+    .searchError{
+        width: 75vw;
+    }
+
+    label > input[type=checkbox]:checked ~ img{
+        transform: scale(1.8);
+        transform-origin: 42% -5%;
     }
 }
 
@@ -412,6 +425,10 @@ label > input[type=checkbox]:checked ~ p{
         margin-right: -12%;
         transition: margin 0.5s;
     }  
+
+    .searchError{
+        max-width: 500px;
+    }
     
 }
 
