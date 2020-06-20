@@ -1,10 +1,10 @@
-/********************   Body Elements   ********************/
+/********************   CSS Classes   ********************/
 .portfolio {
     padding: 5% 0 10% 3%;
 }
 
 .filter {
-    padding: 25% 0;
+    padding: 25% 0 5%;
 }
 
 .jumbotron {
@@ -208,9 +208,6 @@ footer p {
 /********************   Media Queries   ********************/
 
 @media (max-width: 767px) {
-    /* .nav-item {
-        text-align: center;
-    } */
 
     .brand-logo {
         transform: translateX(-50%);
@@ -228,4 +225,16 @@ footer p {
     }
 
 
+}
+
+@media (max-width: 960px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
 }

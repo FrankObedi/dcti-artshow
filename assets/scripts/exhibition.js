@@ -118,7 +118,7 @@ window.onload = function () {
     transitionDuration: 0
   });
   
-  var $selects = $('select');
+  var $selects = $('.filter-select');
   var $checkboxes = $('input');
 
   $selects.add( $checkboxes ).change( function() {
